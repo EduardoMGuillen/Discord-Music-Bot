@@ -51,10 +51,15 @@ class MusicBot(commands.Cog):
             ctx.voice_client.stop()
             await ctx.send('Skipped')
 
+    @commands.command()
+    async def pause(self, ctx):
+        ctx.voice_client.pause()
+        await ctx.send('Pause')
+
 client = commands.Bot(command_prefix="!", intents=intents)
 
 async def main():
     await client.add_cog(MusicBot(client))
-    await client.start("")
+    await client.start("YourToken")
 
 asyncio.run(main())
